@@ -2,6 +2,8 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const admin = require("firebase-admin");
+const { DateTime } = require("luxon"); // Use Luxon for date formatting (optional)
+
 require("dotenv").config();
 
 const app = express();
@@ -67,6 +69,20 @@ app.post("/webhook", async (req, res) => {
     await userRef.update({
       balance: oldBalance + netAmount,
     });
+
+    // Prepare data
+    const reports = {
+      id: req.body["id"], // Transaction ID same as Flutterwave transaction ID
+      amount: netAmount,
+      user: req.body["customer"],
+      status: req.body["status"],
+      transaction_id: req.body["txRef"],
+      createdAt: DateTime.now().toFormat("yyyy-MM-dd hh:mm a"), // Current timestamp
+    };
+
+    console.log("reports:", reports);
+    //storing the data in firestore
+    admin.firestore().collection("deposit").add(reports);
 
     // Respond to the webhook with success
     return res.status(200).send({ message: "User payment is success" });
