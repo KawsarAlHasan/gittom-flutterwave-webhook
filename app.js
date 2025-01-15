@@ -39,6 +39,7 @@ app.post("/webhook", async (req, res) => {
 
   // Handle the webhook event here
   const payload = req.body;
+  console.log("payload:", payload);
   if (payload["data"]["status"] == "successful") {
     const grossAmount = req.body["data"]["amount"];
     const feePercentage = 1.4 + 0.105; // Example: 2.5% fee (adjust as necessary)
