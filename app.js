@@ -40,8 +40,8 @@ app.post("/webhook", async (req, res) => {
   // Handle the webhook event here
   const payload = req.body;
   console.log("payload:", payload);
-  if (payload["data"]["status"] == "successful") {
-    const grossAmount = req.body["data"]["amount"];
+  if (payload["status"] == "successful") {
+    const grossAmount = req.body["amount"];
     const feePercentage = 1.4 + 0.105; // Example: 2.5% fee (adjust as necessary)
     const flatFee = 0.0; // Example: flat fee (adjust as necessary)
 
@@ -50,7 +50,7 @@ app.post("/webhook", async (req, res) => {
     const netAmount = grossAmount - totalFee;
 
     console.log("User netAmount:", netAmount);
-    const customerEmail = req.body["data"]["customer"]["email"];
+    const customerEmail = req.body["customer"]["email"];
     // const customerEmail = "nayon.coders@gmail.com";
 
     // Look up user by email in Firestore
