@@ -1,9 +1,21 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const cors = require("cors");
 const admin = require("firebase-admin");
 require("dotenv").config();
 
 const app = express();
+
+const globalCorsOptions = {
+  origin: "*",
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  allowedHeaders: "Content-Type,Authorization",
+};
+app.use(cors(globalCorsOptions));
+app.options("*", cors(globalCorsOptions));
+app.use(cors());
+app.use(bodyParser.json());
+app.use(express.json());
 
 // Initialize Firebase Admin with Service Account credentials
 const serviceAccount = require("./glucoi-c09b2-firebase-adminsdk-uhnsy-e44b43e94c.json"); // Replace with your service account key file path
@@ -37,10 +49,8 @@ app.post("/webhook", async (req, res) => {
     const netAmount = grossAmount - totalFee;
 
     console.log("User netAmount:", netAmount);
-    //const customerEmail = req.body["data"]["customer"]["email"];
-    const customerEmail = "nayon.coders@gmail.com";
-
-    console.log("User not found with email:", customerEmail);
+    const customerEmail = req.body["data"]["customer"]["email"];
+    // const customerEmail = "nayon.coders@gmail.com";
 
     // Look up user by email in Firestore
     const userRef = admin.firestore().collection("users").doc(customerEmail); // Assuming email is the document ID
