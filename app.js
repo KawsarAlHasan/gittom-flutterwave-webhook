@@ -41,7 +41,6 @@ app.post("/webhook", async (req, res) => {
 
   // Handle the webhook event here
   const payload = req.body;
-  console.log("payload:", payload);
   if (payload["status"] == "successful") {
     const grossAmount = req.body["amount"];
     const feePercentage = 1.4 + 0.105; // Example: 2.5% fee (adjust as necessary)
@@ -90,6 +89,9 @@ app.post("/webhook", async (req, res) => {
 
   res.status(200).json({ message: "Webhook received successfully" });
 });
+
+// Routes
+app.use("/api/v1/test", require("./router/topBillCategoriesRoute"));
 
 app.listen(6000, () => {
   console.log("Server is running on port 6000");
