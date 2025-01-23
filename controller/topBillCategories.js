@@ -18,30 +18,31 @@ exports.getData = async (req, res) => {
     res.status(500).json({
       success: false,
       message: "Failed to fetch data from Flutterwave API",
-      error: error.message,
+      error: error.response?.data || error.message,
     });
   }
 };
 
 exports.postData = async (req, res) => {
   const { url, bearer_token, body } = req.body;
+
   try {
     const response = await axios.post(url, body, {
       headers: {
         Authorization: `Bearer FLWSECK-197107a548bdc1855903840dd6988aa1-193c5f5fc58vt-X`,
       },
     });
+    console.log(response);
 
     res.json({
       status: "success",
-      message: response?.data?.message,
-      data: response?.data?.data,
+      message: "Post Successfully",
     });
   } catch (error) {
     res.status(500).json({
       success: false,
-      message: "Failed to fetch data from Flutterwave API",
-      error: error.message,
+      message: "Internal server error",
+      error: error.response?.data || error.message,
     });
   }
 };
