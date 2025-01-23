@@ -1,15 +1,7 @@
 const axios = require("axios");
 
-// curl --request GET \
-//      --url 'https://api.flutterwave.com/v3/top-bill-categories?country=NG' \
-//      --header 'Authorization: Bearer FLWSECK_TEST-SANDBOXDEMOKEY-X' \
-//      --header 'Content-Type: application/json' \
-//      --header 'accept: application/json'
-
 exports.getData = async (req, res) => {
   const { url, bearer_token } = req.query;
-  console.log("url", url);
-  console.log("bearer_token", bearer_token);
   try {
     const response = await axios.get(url, {
       headers: {
