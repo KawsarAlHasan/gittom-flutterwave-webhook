@@ -5,7 +5,7 @@ exports.getData = async (req, res) => {
   try {
     const response = await axios.get(url, {
       headers: {
-        Authorization: `Bearer ${bearer_token}`,
+        Authorization: `Bearer FLWSECK-197107a548bdc1855903840dd6988aa1-193c5f5fc58vt-X`,
       },
     });
 
@@ -28,7 +28,7 @@ exports.postData = async (req, res) => {
   try {
     const response = await axios.post(url, body, {
       headers: {
-        Authorization: `Bearer ${bearer_token}`,
+        Authorization: `Bearer FLWSECK-197107a548bdc1855903840dd6988aa1-193c5f5fc58vt-X`,
       },
     });
 
@@ -51,7 +51,7 @@ exports.updateData = async (req, res) => {
   try {
     const response = await axios.put(url, body, {
       headers: {
-        Authorization: `Bearer ${bearer_token}`,
+        Authorization: `Bearer FLWSECK-197107a548bdc1855903840dd6988aa1-193c5f5fc58vt-X`,
       },
     });
 
@@ -74,7 +74,7 @@ exports.deleteData = async (req, res) => {
   try {
     const response = await axios.delete(url, {
       headers: {
-        Authorization: `Bearer ${bearer_token}`,
+        Authorization: `Bearer FLWSECK-197107a548bdc1855903840dd6988aa1-193c5f5fc58vt-X`,
       },
     });
 

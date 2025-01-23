@@ -100,3 +100,6 @@ app.listen(6000, () => {
 app.get("/", (req, res) => {
   res.send("Server is running");
 });
+
+// ssh ubuntu@162.19.224.135
+// Qi8KqJVQ2AbyVU
