@@ -91,7 +91,7 @@ app.post("/webhook", async (req, res) => {
 });
 
 // Routes
-app.use("/api/v1/test", require("./router/topBillCategoriesRoute"));
+app.use("/api/v1/topBill", require("./router/topBillCategoriesRoute"));
 
 app.listen(6000, () => {
   console.log("Server is running on port 6000");
