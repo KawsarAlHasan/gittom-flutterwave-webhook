@@ -32,11 +32,11 @@ exports.postData = async (req, res) => {
         Authorization: `Bearer FLWSECK-197107a548bdc1855903840dd6988aa1-193c5f5fc58vt-X`,
       },
     });
-    console.log(response);
 
     res.json({
       status: "success",
       message: "Post Successfully",
+      data: response.data,
     });
   } catch (error) {
     res.status(500).json({
