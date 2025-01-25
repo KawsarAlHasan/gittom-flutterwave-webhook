@@ -33,17 +33,12 @@ exports.postData = async (req, res) => {
       },
     });
 
-    res.json({
-      status: "success",
-      message: "Post Successfully",
-      data: response.data,
-    });
+    const sendData = response.data;
+
+    res.json(sendData);
   } catch (error) {
-    res.status(500).json({
-      success: false,
-      message: "Internal server error",
-      error: error.response?.data || error.message,
-    });
+    const responseBack = error.response?.data || error.message;
+    res.status(500).json(responseBack);
   }
 };
 
@@ -56,17 +51,12 @@ exports.updateData = async (req, res) => {
       },
     });
 
-    res.json({
-      status: "success",
-      message: response?.data?.message,
-      data: response?.data?.data,
-    });
+    const sendData = response.data;
+
+    res.json(sendData);
   } catch (error) {
-    res.status(500).json({
-      success: false,
-      message: "Failed to fetch data from Flutterwave API",
-      error: error.message,
-    });
+    const responseBack = error.response?.data || error.message;
+    res.status(500).json(responseBack);
   }
 };
 
@@ -79,16 +69,11 @@ exports.deleteData = async (req, res) => {
       },
     });
 
-    res.json({
-      status: "success",
-      message: response?.data?.message,
-      data: response?.data?.data,
-    });
+    const sendData = response.data;
+
+    res.json(sendData);
   } catch (error) {
-    res.status(500).json({
-      success: false,
-      message: "Failed to fetch data from Flutterwave API",
-      error: error.message,
-    });
+    const responseBack = error.response?.data || error.message;
+    res.status(500).json(responseBack);
   }
 };
