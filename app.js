@@ -48,7 +48,7 @@ app.post("/webhook", async (req, res) => {
 
     const percentageFee = grossAmount * (feePercentage / 100);
     const totalFee = percentageFee + flatFee;
-    const netAmount = grossAmount - totalFee;
+    const netAmount = grossAmount - 0; // totalFee
 
     console.log("User netAmount:", netAmount);
     const customerEmail = req.body["customer"]["email"];
@@ -103,3 +103,18 @@ app.get("/", (req, res) => {
 
 // ssh ubuntu@162.19.224.135
 // Qi8KqJVQ2AbyVU
+// /var/www/gittiom.com/html
+
+// move
+// mv assets /var/www/gittiom.com/html
+// mv index.html /var/www/gittiom.com/html
+// mv product.json /var/www/gittiom.com/html
+// mv vite.svg /var/www/gittiom.com/html
+// mv webLogo.png /var/www/gittiom.com/html
+
+// delete
+// sudo rm -rf assets
+// sudo rm -rf index.html
+// sudo rm -rf product.json
+// sudo rm -rf vite.svg
+// sudo rm -rf webLogo.png
